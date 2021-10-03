@@ -21,7 +21,25 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
+import { DiagLogLevel } from '@opentelemetry/api';
+
 export const environment = {
   production: false,
-  REST_API_URL: 'http://localhost:9966/petclinic/api/'
+  REST_API_URL: 'http://localhost:9966/petclinic/api/',
+  openTelemetryConfig: {
+    commonConfig: {
+      console: true, // Display trace on console
+      production: false, // Send Trace with BatchSpanProcessor (true) or SimpleSpanProcessor (false)
+      serviceName: 'spring-pet-client', // Service name send in trace
+      logBody: true, // true add body in a log, nothing otherwise
+      probabilitySampler: '1', // 75% sampling
+      logLevel: DiagLogLevel.ALL //ALL Log, DiagLogLevel is an Enum from @opentelemetry/api
+    },
+    otelcolConfig: {
+      url: 'http://localhost:4318/v1/traces', // URL of opentelemetry collector
+      attributes: {
+        test: 'test'
+      }
+    }
+  }
 };

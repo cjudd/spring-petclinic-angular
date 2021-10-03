@@ -35,7 +35,8 @@ import {PartsModule} from './parts/parts.module';
 import {SpecialtiesModule} from './specialties/specialties.module';
 import {HttpErrorHandler} from './error.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import { OpenTelemetryInterceptorModule, OtelColExporterModule, CompositePropagatorModule } from '@jufab/opentelemetry-angular-interceptor';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     SpecialtiesModule,
     PartsModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    OpenTelemetryInterceptorModule.forRoot(environment.openTelemetryConfig),
+    OtelColExporterModule,
+    CompositePropagatorModule,
   ],
   providers: [
     HttpErrorHandler,
