@@ -42,6 +42,7 @@ export class PetEditComponent implements OnInit {
   currentOwner: Owner;
   petTypes: PetType[];
   errorMessage: string;
+  currentTType: any;
 
   constructor(private petService: PetService, private petTypeService: PetTypeService, private router: Router,
               private route: ActivatedRoute) {

@@ -30,6 +30,7 @@ export class SpecialtyAddComponent implements OnInit {
   addedSuccess = false;
   errorMessage: string;
   @Output() newSpeciality = new EventEmitter<Specialty>();
+  specialityName: any;
 
   constructor(private specialtyService: SpecialtyService) {
     this.specialty = {} as Specialty;

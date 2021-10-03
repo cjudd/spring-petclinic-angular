@@ -34,6 +34,8 @@ export class OwnerListComponent implements OnInit {
   errorMessage: string;
   owners: Owner[];
   listOfOwnersWithLastName: Owner[];
+  lastName: any;
+  owner: any;
 
   constructor(private router: Router, private ownerService: OwnerService) {
 
